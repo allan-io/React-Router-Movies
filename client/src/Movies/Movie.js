@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useRouteMatch } from 'react-router-dom';
 
+
 const Movie = (props) => {
   const [movie, setMovie] = useState();
   const params = useParams()
@@ -9,10 +10,8 @@ const Movie = (props) => {
   console.log(params)
   console.log(match)
   const { url, path } = match
-  // const setMovie()
   
   useEffect(() => {
-    // const { id } = props.match.params
     
     const id = params.id
     
@@ -40,11 +39,13 @@ const Movie = (props) => {
     return <div>Loading movie information...</div>;
   }
 
-  const { title, director, metascore, stars } = movie;
+  const { title, director, metascore, stars, imgUrl } = movie;
+  console.log(movie)
   return (
     <div className="save-wrapper">
       <div className="movie-card">
         <h2>{title}</h2>
+        <img src={imgUrl}/>
         <div className="movie-director">
           Director: <em>{director}</em>
         </div>
